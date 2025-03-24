@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Booking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('booking.jpeg') no-repeat center center fixed; /* Add the background image */
+            background-size: cover; /* Ensure the image covers the entire screen */
+            color: #333;
+            display: flex;         
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .booking-form {
+            background-color: rgba(255, 255, 255, 0.9); /* Add transparency to the form background */
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            text-align: center;
+            color: #4CAF50;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .submit-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        .submit-button:hover {
+            background-color: #45a049;
+        }
+
+        .back-button {
+            background-color: #f44336;
+            color: white;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+
+        .back-button:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+    <div class="booking-form">
+        <h2>Hotel Booking</h2>
+        <form action="payment.html" method="GET">
+            <input type="hidden" id="hotelName" name="hotelName">
+            <input type="hidden" id="hotelCost" name="hotelCost">
+
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" name="fullName" required>
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="checkIn">Check-In Date</label>
+            <input type="date" id="checkIn" name="checkIn" required>
+
+            <label for="checkOut">Check-Out Date</label>
+            <input type="date" id="checkOut" name="checkOut" required>
+
+            <label for="guests">Number of Guests</label>
+            <select id="guests" name="guests">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+
+            <button type="submit" class="submit-button">Proceed to Payment</button>
+        </form>
+        <button class="back-button" onclick="goBack()">Back to Hotels</button>
+    </div>
+
+    <script>
+        // Populate hidden inputs with URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        document.getElementById('hotelName').value = urlParams.get('hotelName');
+        document.getElementById('hotelCost').value = urlParams.get('hotelCost');
+
+        // Function for back button
+        function goBack() {
+            window.location.href = "hotel.html"; // Replace with your hotels page URL
+        }
+    </script>
+</body>
+</html>

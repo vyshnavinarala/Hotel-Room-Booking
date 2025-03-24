@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot Password - Hotel Room Booking</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('login.jpg'); /* Replace 'forgot-password-bg.jpg' with your actual image file */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: black;
+        }
+
+        .forgot-password-form {
+            background-color: black(255, 255, 255, 0.9); /* Slight transparency for readability */
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .forgot-password-form label {
+            font-size: 1rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .forgot-password-form input {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1.25rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .forgot-password-form button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .forgot-password-form button:hover {
+            background-color: #45a049;
+        }
+
+        .verification-section {
+            display: none; /* Initially hidden */
+        }
+
+        .back-to-login {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .back-to-login a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .back-to-login a:hover {
+            text-decoration: underline;
+        }
+
+        .success-message {
+            display: none; /* Hidden until password is successfully changed */
+            color: green;
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2>Forgot Your Password?</h2>
+    <form class="forgot-password-form" id="forgotPasswordForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="email">Email ID:</label>
+        <input type="email" id="email" name="email" required>
+
+        <button type="button" id="sendCodeButton">Send Verification Code</button>
+
+        <!-- Hidden section for entering the verification code and resetting password -->
+        <div class="verification-section" id="verificationSection">
+            <label for="verificationCode">Enter Verification Code:</label>
+            <input type="text" id="verificationCode" name="verificationCode" required>
+
+            <label for="newPassword">New Password:</label>
+            <input type="password" id="newPassword" name="newPassword" required>
+
+            <label for="confirmNewPassword">Confirm New Password:</label>
+            <input type="password" id="confirmNewPassword" name="confirmNewPassword" required>
+
+            <button type="button" id="resetPasswordButton">Reset Password</button>
+        </div>
+    </form>
+
+    <div class="success-message" id="successMessage">
+        Password changed successfully!
+    </div>
+
+    <div class="back-to-login">
+        <a href="login.html">Back to Login</a>
+    </div>
+
+    <script>
+        const sendCodeButton = document.getElementById('sendCodeButton');
+        const verificationSection = document.getElementById('verificationSection');
+        const resetPasswordButton = document.getElementById('resetPasswordButton');
+        const successMessage = document.getElementById('successMessage');
+
+        // Simulate sending a verification code and reveal the next step
+        sendCodeButton.addEventListener('click', function() {
+            alert('A verification code has been sent to your email.');
+            verificationSection.style.display = 'block';
+        });
+
+        // Simulate password reset functionality
+        resetPasswordButton.addEventListener('click', function() {
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmNewPassword = document.getElementById('confirmNewPassword').value;
+
+            if (newPassword !== confirmNewPassword) {
+                alert('Passwords do not match.');
+            } else {
+                // Simulate password change success
+                alert('Password has been reset successfully!');
+                verificationSection.style.display = 'none';
+                successMessage.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
